@@ -1,14 +1,20 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 function DetailsPage() {
 
     //const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
 
     console.log(movies[0]);
+
+    const goHome = (event) => {
+        history.push('/');
+    };
 
 
     return (
@@ -33,10 +39,12 @@ function DetailsPage() {
                 {
                     genres.map(genre => {
                         return (
-                            <p>{genre.genre}</p>
+                            <h3>Genre:{genre.genre} </h3>
                         )
                     })
                 }
+                <button onClick={goHome}>Back</button>
+
             </section>
         </main>
 
