@@ -8,14 +8,20 @@ function DetailsPage() {
     const movies = useSelector(store => store.movies);
     const genres = useSelector(store => store.genres);
 
-    console.log(movies);
+    console.log(movies[0]);
 
 
     return (
         <main>
             <h1>Movie</h1>
             <section className="movies">
-                {movies.map(movie => {
+
+                <div key={movies[0].id} >
+                    <h3>{movies[0].title}</h3>
+                    <img src={movies[0].poster} alt={movies[0].title} />
+                    <h3>{movies[0].description}</h3>
+                </div>
+                {/* {movies.map(movie => {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
@@ -23,7 +29,7 @@ function DetailsPage() {
                             <h3>{movie.description}</h3>
                         </div>
                     );
-                })}
+                })} */}
                 {
                     genres.map(genre => {
                         return (
