@@ -14,9 +14,20 @@ function MovieList() {
 
     const history = useHistory();
 
-    const detailsPage = (event) => {
+    // const detailsPage = (event) => {
+
+    // };
+
+    //on img click, send ID and go to details page
+    const MovieToGet = (movie) => {
+        dispatch({
+            type: 'MOVIE_TO_GET',
+            payload: movie.id
+        })
         history.push('/DetailsPage');
-    };
+        console.log(movie.id);
+
+    }
 
     return (
         <main>
@@ -26,7 +37,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={detailsPage} />
+                            <img src={movie.poster} alt={movie.title} onClick={() => MovieToGet(movie)} />
                         </div>
                     );
                 })}
