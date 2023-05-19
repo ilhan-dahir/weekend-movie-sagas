@@ -6,22 +6,20 @@ import './MovieList.css'
 function MovieList() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
-    const history = useHistory();
-
     // const detailsPage = (event) => {
-
     // };
 
     //on img click, send ID and go to details page
     const MovieToGet = (movie) => {
         dispatch({
-            type: 'MOVIE_TO_GET',
+            type: 'MOVIE_ID_TO_GET',
             payload: movie.id
         })
         history.push('/DetailsPage');
